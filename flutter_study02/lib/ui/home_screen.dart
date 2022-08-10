@@ -54,9 +54,24 @@ class HomeScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
               ),
-              trailing: IconButton(
-                onPressed: () => Get.to(() => TodoEdit(index: index)),
-                icon: const Icon(Icons.edit),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () => Get.to(() => TodoEdit(index: index)),
+                    icon: const Icon(
+                      Icons.edit,
+                      color: Colors.green,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => todoController.todos.removeAt(index),
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                  ),
+                ],
               ),
               leading: Checkbox(
                 value: todoController.todos[index].done,
